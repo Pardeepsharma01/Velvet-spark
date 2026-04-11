@@ -270,11 +270,11 @@ const AboutPage = () => {
       </section>
 
       {/* ─── Footer Spacing ──────────────────────────────────────── */}
-      <div className="py-12 border-t border-border/50 text-center">
+      {/* <div className="py-12 border-t border-border/50 text-center">
         <p className="text-xs text-muted-foreground tracking-widest uppercase">
           © 2026 Velvet Spark Luxury Artificial Jewelry
         </p>
-      </div>
+      </div> */}
 
     </main>
   );

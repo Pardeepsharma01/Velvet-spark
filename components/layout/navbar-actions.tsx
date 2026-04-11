@@ -103,10 +103,10 @@ import { useAppSelector } from "@/store/hooks";
 import { selectCartCount } from "@/store/cartSlice";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
-  { label: "Collections", href: "/collections" },
-  { label: "New Arrivals", href: "/new-arrivals" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export function NavbarActions() {
@@ -233,7 +233,7 @@ export function NavbarActions() {
     </nav>
 
     {/* Bottom Section: Auth */}
-    <div className="mt-auto p-6 bg-gold/5">
+    <div className=" p-6 bg-gold/5">
       {isLoggedIn ? (
         <Link href="/profile" className="flex items-center gap-3 p-4 rounded-xl border border-gold/20 bg-white dark:bg-charcoal/50">
           <div className="h-10 w-10 rounded-full bg-gold flex items-center justify-center text-white font-bold">
