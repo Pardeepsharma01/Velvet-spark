@@ -11,8 +11,8 @@
     "category": "necklaces",
     "material": "gold-plated",
     "images": [
-      { "url": "/images/products/golden-bloom-necklace-1.jpg", "alt": "Golden Bloom Necklace — front view", "isPrimary": true },
-      { "url": "/images/products/golden-bloom-necklace-2.jpg", "alt": "Golden Bloom Necklace — detail" }
+      { "url": "https://images.unsplash.com/photo-1758995115857-2de1eb6283d0?q=80&w=1442&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Golden Bloom Necklace — front view", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1729518969102-affdd3ae6d7a?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Golden Bloom Necklace — detail" }
     ],
     "tags": ["floral", "layered", "pendant", "bestseller"],
     "stock": 24,
@@ -33,8 +33,8 @@
     "category": "earrings",
     "material": "rose-gold-plated",
     "images": [
-      { "url": "/images/products/rose-aurora-earrings-1.jpg", "alt": "Rose Aurora Earrings — front", "isPrimary": true },
-      { "url": "/images/products/rose-aurora-earrings-2.jpg", "alt": "Rose Aurora Earrings — worn" }
+      { "url": "https://images.unsplash.com/photo-1635686616203-ff9281969531?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Rose Aurora Earrings — front", "isPrimary": true },
+      { "url": "https://plus.unsplash.com/premium_photo-1681276170291-27698ccc0a8e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Rose Aurora Earrings — worn" }
     ],
     "tags": ["teardrop", "rose gold", "hypoallergenic", "new arrival"],
     "stock": 36,
@@ -57,8 +57,8 @@
     "category": "bracelets",
     "material": "gold-plated",
     "images": [
-      { "url": "/images/products/celestial-charm-bracelet-1.jpg", "alt": "Celestial Charm Bracelet — flat lay", "isPrimary": true },
-      { "url": "/images/products/celestial-charm-bracelet-2.jpg", "alt": "Celestial Charm Bracelet — worn" }
+      { "url": "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Celestial Charm Bracelet — flat lay", "isPrimary": true },
+      { "url": "https://plus.unsplash.com/premium_photo-1709033404514-c3953af680b4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Celestial Charm Bracelet — worn" }
     ],
     "tags": ["celestial", "charm", "adjustable", "layering"],
     "stock": 18,
@@ -79,8 +79,8 @@
     "category": "rings",
     "material": "gold-plated",
     "images": [
-      { "url": "/images/products/velvet-solitaire-ring-1.jpg", "alt": "Velvet Solitaire Ring — top view", "isPrimary": true },
-      { "url": "/images/products/velvet-solitaire-ring-2.jpg", "alt": "Velvet Solitaire Ring — side view" }
+      { "url": "https://images.unsplash.com/photo-1481980235850-66e47651e431?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Velvet Solitaire Ring — top view", "isPrimary": true },
+      { "url": "https://plus.unsplash.com/premium_photo-1670537037688-94a5428256b7?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Velvet Solitaire Ring — side view" }
     ],
     "tags": ["solitaire", "CZ", "statement", "everyday"],
     "stock": 30,
@@ -103,8 +103,8 @@
     "category": "sets",
     "material": "gold-plated",
     "images": [
-      { "url": "/images/products/heirloom-pearl-set-1.jpg", "alt": "Heirloom Pearl Set — full set", "isPrimary": true },
-      { "url": "/images/products/heirloom-pearl-set-2.jpg", "alt": "Heirloom Pearl Set — necklace detail" }
+      { "url": "https://images.unsplash.com/photo-1722510825242-0d8f2064c2e2?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Heirloom Pearl Set — full set", "isPrimary": true },
+      { "url": "https://plus.unsplash.com/premium_photo-1681276170538-092ed3578648?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Heirloom Pearl Set — necklace detail" }
     ],
     "tags": ["pearl", "set", "classic", "gift", "bestseller"],
     "stock": 12,
@@ -125,8 +125,8 @@
     "category": "bracelets",
     "material": "oxidised",
     "images": [
-      { "url": "/images/products/midnight-oxidised-cuff-1.jpg", "alt": "Midnight Oxidised Cuff — front", "isPrimary": true },
-      { "url": "/images/products/midnight-oxidised-cuff-2.jpg", "alt": "Midnight Oxidised Cuff — detail" }
+      { "url": "https://images.unsplash.com/photo-1681091645183-9f09b8896f12?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Midnight Oxidised Cuff — front", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1681091639320-0f9c1c55b62f?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Midnight Oxidised Cuff — detail" }
     ],
     "tags": ["oxidised", "cuff", "edgy", "artisan", "statement"],
     "stock": 9,
@@ -149,8 +149,8 @@
     "category": "earrings",
     "material": "gold-plated",
     "images": [
-      { "url": "/images/products/lotus-drop-earrings-1.jpg", "alt": "Lotus Drop Earrings — pair", "isPrimary": true },
-      { "url": "/images/products/lotus-drop-earrings-2.jpg", "alt": "Lotus Drop Earrings — worn" }
+      { "url": "https://plus.unsplash.com/premium_photo-1675107359827-6de8bcf03ccf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Lotus Drop Earrings — pair", "isPrimary": true },
+      { "url": "https://plus.unsplash.com/premium_photo-1675107360180-eee458d9dfdf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Lotus Drop Earrings — worn" }
     ],
     "tags": ["lotus", "drop", "floral", "lightweight"],
     "stock": 22,
@@ -171,7 +171,7 @@
     "category": "necklaces",
     "material": "rose-gold-plated",
     "images": [
-      { "url": "/images/products/serpentine-chain-necklace-1.jpg", "alt": "Serpentine Chain Necklace — flat lay", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Serpentine Chain Necklace — flat lay", "isPrimary": true },
       { "url": "/images/products/serpentine-chain-necklace-2.jpg", "alt": "Serpentine Chain Necklace — worn" }
     ],
     "tags": ["chain", "minimalist", "layering", "rose gold", "new arrival"],

@@ -171,7 +171,7 @@ export default function Hero() {
             {/* Image card */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=720&q=80"
+                src="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Premium Artificial Jewellery"
                 className="w-full h-full object-cover object-center"
               />

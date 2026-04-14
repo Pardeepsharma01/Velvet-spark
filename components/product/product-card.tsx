@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
-
+import Image from "next/image";
 // ─── Helper ───────────────────────────────────────────────────────────────────
 
 function formatPrice(price: number) {
@@ -37,9 +37,23 @@ export function ProductCard({ product, className }: ProductCardProps) {
       <div className="relative aspect-square bg-ivory dark:bg-charcoal-600 overflow-hidden">
         {/* Placeholder — will be replaced with real <Image> when product photos exist */}
         <div className="w-full h-full flex items-center justify-center">
-          <span className="font-display text-4xl text-gold/30 select-none">
+          {/* <span className="font-display text-4xl text-gold/30 select-none">
             ✦
-          </span>
+          </span> */}
+            {product?.images?.[0]?.url ? (
+    <Image
+      src={product.images[0].url}
+      alt={product.images[0].alt}
+      fill
+      sizes="100vw"
+      className="object-cover"
+    />
+  ) : (
+    <div className="w-full h-full flex items-center justify-center">
+      <span>✦</span>
+    </div>
+  )}
+
         </div>
 
         {/* Badges */}

@@ -15,6 +15,7 @@ import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 export default function WishlistPage() {
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectWishlistItems);
+  console.log(items)
 
   if (items.length === 0) {
     return (

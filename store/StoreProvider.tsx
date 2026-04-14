@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { hydrateCart } from "@/store/cartSlice";
+import { hydrateWishlist } from "@/store/wishlistSlice";
 
 // ─── StoreProvider ────────────────────────────────────────────────────────────
 // Client-only wrapper that:
@@ -22,6 +23,7 @@ export function StoreProvider({ children }: StoreProviderProps) {
     // Hydrate cart from localStorage exactly once on client mount
     if (!hydrated.current) {
       store.dispatch(hydrateCart());
+      store.dispatch(hydrateWishlist());
       hydrated.current = true;
     }
   }, []);

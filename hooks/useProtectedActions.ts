@@ -31,10 +31,19 @@ export function useProtectedActions() {
     dispatch(addToCart(product));
   }
 
+  // function handleToggleWishlist(product: Product, currentPath?: string) {
+  //   if (!requireAuth(currentPath)) return;
+  //   dispatch(toggleWishlist(product));
+  // }
   function handleToggleWishlist(product: Product, currentPath?: string) {
-    if (!requireAuth(currentPath)) return;
-    dispatch(toggleWishlist(product));
+  console.log("clicked wishlist");
+  if (!requireAuth(currentPath)) {
+    console.log("blocked by auth ❌");
+    return;
   }
+  console.log("dispatching ✅");
+  dispatch(toggleWishlist(product));
+}
 
   return {
     handleAddToCart,

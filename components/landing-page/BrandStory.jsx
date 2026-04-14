@@ -21,7 +21,7 @@ export default function BrandStory() {
         >
           <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
             <img
-              src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=720&q=80"
+              src="https://plus.unsplash.com/premium_photo-1669977749936-1343d0b0b4d9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Jewellery craftsmanship"
               className="w-full h-full object-cover"
             />
@@ -38,7 +38,7 @@ export default function BrandStory() {
             className="absolute -top-6 -right-6 w-28 h-28 rounded-xl overflow-hidden shadow-xl border-2 border-ivory hidden md:block"
           >
             <img
-              src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=720&q=80"
+              src="https://plus.unsplash.com/premium_photo-1669977749936-1343d0b0b4d9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Jewellery detail"
               className="w-full h-full object-cover"
             />
@@ -79,7 +79,7 @@ export default function BrandStory() {
             </div>
             <div>
               <p className="font-playfair italic text-charcoal text-sm">Founder, Velvet Spark</p>
-              <p className="font-jost text-xs text-charcoal/40 tracking-wide mt-0.5">Since 2022</p>
+              <p className="font-jost text-xs text-charcoal/40 tracking-wide mt-0.5">Since 2026</p>
             </div>
           </div>
 
