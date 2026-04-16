@@ -12,7 +12,7 @@ export default function AuthLayout({
   return (
     <div className="min-h-screen flex flex-col bg-ivory dark:bg-charcoal">
       {/* Minimal header */}
-      <header className="flex items-center justify-center h-16 border-b border-gold/20">
+      {/* <header className="flex items-center justify-center h-16 border-b border-gold/20">
         <Link
           href="/"
           className="font-display text-2xl font-bold text-charcoal dark:text-ivory"
@@ -20,7 +20,7 @@ export default function AuthLayout({
         >
           Velvet <span className="text-gradient-gold">Spark</span>
         </Link>
-      </header>
+      </header> */}
 
       {/* Auth form area */}
       <main className="flex-1 flex items-center justify-center px-4 py-12">
@@ -28,11 +28,11 @@ export default function AuthLayout({
       </main>
 
       {/* Minimal footer */}
-      <footer className="flex items-center justify-center h-12 border-t border-gold/20">
+      {/* <footer className="flex items-center justify-center h-12 border-t border-gold/20">
         <p className="text-xs text-charcoal-400 dark:text-charcoal-300">
           © {new Date().getFullYear()} Velvet Spark. All rights reserved.
         </p>
-      </footer>
+      </footer> */}
     </div>
   );
 }
