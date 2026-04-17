@@ -272,7 +272,16 @@ export default function CartPage() {
                       {formatPrice(grandTotal)}
                     </motion.span>
                   </div>
-                  <Link href="/checkout">
+                  <Button
+                    asChild
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    className="mt-2"
+                  >
+                    <Link href="/checkout">Proceed to Checkout</Link>
+                  </Button>
+                  {/* <Link href="/checkout">
                     <Button
                       variant="primary"
                       size="lg"
@@ -281,7 +290,7 @@ export default function CartPage() {
                     >
                       Proceed to Checkout
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/shop"
                     className="text-center text-xs text-gold hover:text-gold-700 font-medium transition-colors"
