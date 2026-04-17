@@ -53,11 +53,15 @@ export async function signIn(formData: FormData) {
 export async function signInWithGoogle() {
   const supabase = await createClient();
 
+  // const siteUrl =
+  //   process.env.NEXT_PUBLIC_SITE_URL ||
+  //   process.env.VERCEL_URL
+  //     ? `https://${process.env.VERCEL_URL}`
+  //     : "http://localhost:3000";
+
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
