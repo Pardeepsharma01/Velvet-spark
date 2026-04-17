@@ -44,7 +44,8 @@ export async function signIn(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  return redirect(redirectTo);
+  // return redirect(redirectTo);
+  return redirect("/auth/sign-up-success?next=" + redirectTo);
 }
 
 // ─── Google OAuth ─────────────────────────────────────────────────────────────
@@ -61,7 +62,8 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${siteUrl}/auth/confirm?next=/`,
+      // redirectTo: `${siteUrl}/auth/confirm?next=/`,
+      redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
     },
   });
 

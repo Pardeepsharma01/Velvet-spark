@@ -53,7 +53,7 @@ export default function SignUpForm() {
       )}
 
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-        <Input name="name" type="text" label="Full name" placeholder="Priya Sharma"
+        <Input name="name" type="text" label="Full name" placeholder="Enter your Name"
           autoComplete="name" error={!!formError.name} hint={formError.name} disabled={isPending} />
         <Input name="email" type="email" label="Email address" placeholder="you@example.com"
           autoComplete="email" error={!!formError.email} hint={formError.email} disabled={isPending} />
