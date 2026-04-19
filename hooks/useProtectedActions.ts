@@ -38,10 +38,10 @@ export function useProtectedActions() {
   function handleToggleWishlist(product: Product, currentPath?: string) {
   console.log("clicked wishlist");
   if (!requireAuth(currentPath)) {
-    console.log("blocked by auth ❌");
+    console.log("blocked by auth ");
     return;
   }
-  console.log("dispatching ✅");
+  console.log("dispatching ");
   dispatch(toggleWishlist(product));
 }
 

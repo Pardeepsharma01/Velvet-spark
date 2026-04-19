@@ -30,7 +30,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       className={cn(
         "group flex flex-col bg-white dark:bg-charcoal-700 rounded-xl border border-border overflow-hidden",
         "hover:shadow-card-lg hover:border-gold/30 transition-all duration-300",
-        className
+        className,
       )}
     >
       {/* ── Image ────────────────────────────────────────────────────── */}
@@ -40,20 +40,19 @@ export function ProductCard({ product, className }: ProductCardProps) {
           {/* <span className="font-display text-4xl text-gold/30 select-none">
             ✦
           </span> */}
-            {product?.images?.[0]?.url ? (
-    <Image
-      src={product.images[0].url}
-      alt={product.images[0].alt}
-      fill
-      sizes="100vw"
-      className="object-cover"
-    />
-  ) : (
-    <div className="w-full h-full flex items-center justify-center">
-      <span>✦</span>
-    </div>
-  )}
-
+          {product?.images?.[0]?.url ? (
+            <Image
+              src={product.images[0].url}
+              alt={product.images[0].alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span>✦</span>
+            </div>
+          )}
         </div>
 
         {/* Badges */}
@@ -85,7 +84,18 @@ export function ProductCard({ product, className }: ProductCardProps) {
           aria-label="Add to wishlist"
           className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/80 dark:bg-charcoal/80 backdrop-blur-sm border border-border hover:border-gold/40 hover:text-rose-gold transition-all duration-200 opacity-0 group-hover:opacity-100"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
         </button>
@@ -116,7 +126,11 @@ export function ProductCard({ product, className }: ProductCardProps) {
                 fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
                 stroke="currentColor"
                 strokeWidth="1.5"
-                className={i < Math.floor(product.rating) ? "text-gold" : "text-charcoal-200"}
+                className={
+                  i < Math.floor(product.rating)
+                    ? "text-gold"
+                    : "text-charcoal-200"
+                }
                 aria-hidden="true"
               >
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -148,10 +162,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
 export function ProductCardSkeleton({ className }: { className?: string }) {
   return (
-    <div className={cn(
-      "flex flex-col bg-white dark:bg-charcoal-700 rounded-xl border border-border overflow-hidden animate-pulse",
-      className
-    )}>
+    <div
+      className={cn(
+        "flex flex-col bg-white dark:bg-charcoal-700 rounded-xl border border-border overflow-hidden animate-pulse",
+        className,
+      )}
+    >
       <div className="aspect-square bg-ivory dark:bg-charcoal-600" />
       <div className="p-4 flex flex-col gap-2">
         <div className="h-3 w-16 bg-gold/15 rounded" />
