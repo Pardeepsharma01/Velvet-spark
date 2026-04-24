@@ -11,7 +11,8 @@ function SuccessContent() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push(next);
+      // router.push(next);
+      window.location.href = next;
     }, 2000);
     return () => clearTimeout(timer);
   }, [next, router]);

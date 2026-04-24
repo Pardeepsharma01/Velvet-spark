@@ -2,24 +2,24 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Product, WishlistState } from "@/types";
 
 // ─── Storage Logic ───────────────────────────────────────────────────────────
-const WISHLIST_STORAGE_KEY = "velvet-spark:wishlist";
+// const WISHLIST_STORAGE_KEY = "velvet-spark:wishlist";
 
-function loadWishlistFromStorage(): Product[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(WISHLIST_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
+// function loadWishlistFromStorage(): Product[] {
+//   if (typeof window === "undefined") return [];
+//   try {
+//     const raw = localStorage.getItem(WISHLIST_STORAGE_KEY);
+//     return raw ? JSON.parse(raw) : [];
+//   } catch {
+//     return [];
+//   }
+// }
 
-function saveWishlistToStorage(items: Product[]) {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(items));
-  } catch {}
-}
+// function saveWishlistToStorage(items: Product[]) {
+//   if (typeof window === "undefined") return;
+//   try {
+//     localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(items));
+//   } catch {}
+// }
 
 // ─── Initial State ────────────────────────────────────────────────────────────
 
@@ -33,9 +33,9 @@ const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-  hydrateWishlist(state) {
-    state.items = loadWishlistFromStorage();
-  },
+  // hydrateWishlist(state) {
+  //   state.items = loadWishlistFromStorage();
+  // },
   // reducers: {
     /**
      * Toggle a product in the wishlist.
@@ -52,7 +52,7 @@ const wishlistSlice = createSlice({
       } else {
         state.items.push(product);
       }
-      saveWishlistToStorage(state.items);
+      // saveWishlistToStorage(state.items);
     },
 
     /**
@@ -60,7 +60,7 @@ const wishlistSlice = createSlice({
      */
     removeFromWishlist(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
-      saveWishlistToStorage(state.items);
+      // saveWishlistToStorage(state.items);
     },
 
     /**
@@ -68,12 +68,12 @@ const wishlistSlice = createSlice({
      */
     clearWishlist(state) {
       state.items = [];
-      saveWishlistToStorage(state.items);
+      // saveWishlistToStorage(state.items);
     },
   },
 });
 
-export const { toggleWishlist, removeFromWishlist, clearWishlist, hydrateWishlist } =
+export const { toggleWishlist, removeFromWishlist, clearWishlist } =
   wishlistSlice.actions;
 
 // ─── Selectors ────────────────────────────────────────────────────────────────

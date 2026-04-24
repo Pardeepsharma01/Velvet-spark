@@ -4,26 +4,26 @@ import type { CartItem, CartState, Product } from "@/types";
 // ─── localStorage helpers ──────────────────────────────────────────────────────
 // Cart is persisted client-side. We read on init and write on every change.
 
-const CART_STORAGE_KEY = "velvet-spark:cart";
+// const CART_STORAGE_KEY = "velvet-spark:cart";
 
-function loadCartFromStorage(): CartItem[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(CART_STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as CartItem[]) : [];
-  } catch {
-    return [];
-  }
-}
+// function loadCartFromStorage(): CartItem[] {
+//   if (typeof window === "undefined") return [];
+//   try {
+//     const raw = localStorage.getItem(CART_STORAGE_KEY);
+//     return raw ? (JSON.parse(raw) as CartItem[]) : [];
+//   } catch {
+//     return [];
+//   }
+// }
 
-function saveCartToStorage(items: CartItem[]): void {
-  if (typeof window === "undefined") return;
-  try {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
-  } catch {
-    // Storage full or unavailable — fail silently
-  }
-}
+// function saveCartToStorage(items: CartItem[]): void {
+//   if (typeof window === "undefined") return;
+//   try {
+//     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+//   } catch {
+//     // Storage full or unavailable — fail silently
+//   }
+// }
 
 // ─── Initial State ────────────────────────────────────────────────────────────
 
@@ -41,9 +41,9 @@ const cartSlice = createSlice({
      * Hydrate cart from localStorage on client mount.
      * Called once by StoreProvider after hydration.
      */
-    hydrateCart(state) {
-      state.items = loadCartFromStorage();
-    },
+    // hydrateCart(state) {
+    //   state.items = loadCartFromStorage();
+    // },
 
     /**
      * Add a product to cart.
@@ -63,7 +63,7 @@ const cartSlice = createSlice({
         state.items.push({ product, quantity: 1 });
       }
 
-      saveCartToStorage(state.items);
+      // saveCartToStorage(state.items);
     },
 
     /**
@@ -73,7 +73,7 @@ const cartSlice = createSlice({
       state.items = state.items.filter(
         (item) => item.product.id !== action.payload
       );
-      saveCartToStorage(state.items);
+      // saveCartToStorage(state.items);
     },
 
     /**
@@ -97,7 +97,7 @@ const cartSlice = createSlice({
         }
       }
 
-      saveCartToStorage(state.items);
+      // saveCartToStorage(state.items);
     },
 
     /**
@@ -105,13 +105,13 @@ const cartSlice = createSlice({
      */
     clearCart(state) {
       state.items = [];
-      saveCartToStorage(state.items);
+      // saveCartToStorage(state.items);
     },
   },
 });
 
 export const {
-  hydrateCart,
+  // hydrateCart,
   addToCart,
   removeFromCart,
   updateQuantity,

@@ -1,31 +1,147 @@
 // For OAuth provider confirmation flow (Google, GitHub, etc)  //
-
 import { createClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
+  const { searchParams, origin } = new URL(request.url);
 
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/";
 
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
+
+  // console.log("=== OAuth Callback ===");
+  // console.log("Code:", code ? "EXISTS" : "MISSING");
+  // console.log("Next:", next);
+  // console.log("SiteUrl:", siteUrl);
 
   if (code) {
     const supabase = await createClient();
-
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
+    // console.log("Exchange Error:", error);
+
     if (!error) {
-      return NextResponse.redirect(`${siteUrl}${next}`);
+      const redirectUrl = `${siteUrl}/auth/sign-up-success?next=${next}`;
+      // console.log("SUCCESS - Redirecting to:", redirectUrl); 
+      return NextResponse.redirect(redirectUrl);              
     }
+
+    return NextResponse.redirect(
+      `${siteUrl}/auth/error?error=${encodeURIComponent(error.message)}`
+    );
   }
 
   return NextResponse.redirect(
-    `${siteUrl}/auth/error?error=OAuth failed`
+    `${siteUrl}/auth/error?error=${encodeURIComponent("No code provided")}`
   );
 }
+
+
+
+
+
+// import { createClient } from "@/lib/supabase/server";
+// import { NextRequest, NextResponse } from "next/server";
+
+// export async function GET(request: NextRequest) {
+//   const { searchParams, origin } = new URL(request.url);
+
+//   const code = searchParams.get("code");
+//   const next = searchParams.get("next") ?? "/";
+
+//   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
+
+//   console.log("=== OAuth Callback ===");
+//   console.log("Code:", code ? "EXISTS" : "MISSING");
+//   console.log("Next:", next);
+//   console.log("SiteUrl:", siteUrl);
+
+//   if (code) {
+//     const supabase = await createClient();
+//     const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+//     console.log("Exchange Error:", error);
+
+//     if (!error) {
+//       return NextResponse.redirect(`${siteUrl}/auth/sign-up-success?next=${next}`);
+      
+//     }
+
+//     return NextResponse.redirect(
+//       `${siteUrl}/auth/error?error=${encodeURIComponent(error.message)}`
+//     );
+//   }
+
+//   return NextResponse.redirect(
+//     `${siteUrl}/auth/error?error=${encodeURIComponent("No code provided")}`
+//   );
+// }
+
+
+
+
+
+// import { createClient } from "@/lib/supabase/server";
+// import { NextRequest, NextResponse } from "next/server";
+
+// export async function GET(request: NextRequest) {
+//   const { searchParams, origin } = new URL(request.url);
+
+//   const code = searchParams.get("code");
+//   const next = searchParams.get("next") ?? "/";
+
+//   const siteUrl =
+//     process.env.NEXT_PUBLIC_SITE_URL || origin; // ✅ origin fallback
+
+//   if (code) {
+//     const supabase = await createClient();
+
+//     const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+//     if (!error) {
+//       // ✅ window.location jaisi hard redirect
+//       return NextResponse.redirect(`${siteUrl}/auth/sign-up-success?next=${next}`);
+//     }
+
+//     // ✅ Error bhi redirect mein encode karo
+//     console.log("OAuth Error:", error);
+//     return NextResponse.redirect(
+//       `${siteUrl}/auth/error?error=${encodeURIComponent(error.message)}`
+//     );
+//   }
+
+//   return NextResponse.redirect(
+//     `${siteUrl}/auth/error?error=${encodeURIComponent("No code provided")}`
+//   );
+// }
+// ==================================================================================================
+// import { createClient } from "@/lib/supabase/server";
+// import { NextRequest, NextResponse } from "next/server";
+
+// export async function GET(request: NextRequest) {
+//   const { searchParams } = new URL(request.url);
+
+//   const code = searchParams.get("code");
+//   const next = searchParams.get("next") ?? "/";
+
+//   const siteUrl =
+//     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+//   if (code) {
+//     const supabase = await createClient();
+
+//     const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+//     if (!error) {
+//       return NextResponse.redirect(`${siteUrl}${next}`);
+//     }
+//   }
+
+//   return NextResponse.redirect(
+//     `${siteUrl}/auth/error?error=OAuth failed`
+//   );
+// }
 
 //////////////////////////////////////////////////////////
 

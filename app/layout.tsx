@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
+import { AuthProvider } from "@/providers/AuthProvider";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 
@@ -72,12 +73,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <StoreProvider>
+            <AuthProvider>
             {/* ── Global layout shell ─────────────────────────────────── */}
             <Navbar />
 
             <main className="flex-1">{children}</main>
 
             <Footer />
+            </AuthProvider>
           </StoreProvider>
         </ThemeProvider>
       </body>

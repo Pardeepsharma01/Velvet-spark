@@ -24,8 +24,10 @@ export async function signUp(formData: FormData) {
   if (error) {
     return redirect(`/auth/sign-up?error=${encodeURIComponent(error.message)}`);
   }
-
-  return redirect("/auth/sign-up-success");
+return redirect("/auth/sign-up-success");
+  // return redirect("/auth/sign-up-success");
+  // revalidatePath("/", "layout");
+// return redirect("/auth/sign-up-success?next=" + redirectTo);
 }
 
 // ─── Sign In ──────────────────────────────────────────────────────────────────
@@ -66,8 +68,9 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      // redirectTo: `${siteUrl}/auth/confirm?next=/`,
-      redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
+      redirectTo: `${siteUrl}/auth/confirm?next=/`,
+      // redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
+      // redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
     },
   });
 
@@ -86,5 +89,5 @@ export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
-  return redirect("/");
+  return redirect("/auth/signout-success");
 }
