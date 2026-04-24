@@ -1,9 +1,15 @@
 "use client";
 
+import { clearCart } from "@/store/cartSlice";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 
 export default function SignOutSuccessPage() {
+    const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(clearCart()); // ✅ logout pe cart empty
     const timer = setTimeout(() => {
       window.location.href = "/"; // ✅ Full reload - session clear hoga
     }, 1500);
