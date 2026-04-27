@@ -36,6 +36,7 @@ import {
   FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import orderReducer from "./orderSlice";
 
 // const storage = typeof window !== "undefined"
 //   ? require("redux-persist/lib/storage").default
@@ -44,12 +45,13 @@ import storage from "redux-persist/lib/storage";
 const rootReducer = combineReducers({
   cart: cartReducer,        // ← yahan bhi
   wishlist: wishlistReducer,
+  orders: orderReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["wishlist" , "cart"], // sirf wishlist persist hoga, cart nahi
+  whitelist: ["wishlist" , "cart", "orders"], 
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

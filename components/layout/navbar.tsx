@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { NavbarActions } from "@/components/layout/navbar-actions";
+// import Image from "next/image";
 
 // ─── Nav Links ────────────────────────────────────────────────────────────────
 
 const NAV_LINKS = [
-  { label: "Home",         href: "/" },
-  { label: "Shop",         href: "/shop" },
-  { label: "About",        href: "/about" },
-  { label: "Contact",      href: "/contact" },
+  { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 // ─── Navbar (Server Component) ────────────────────────────────────────────────
@@ -24,14 +25,21 @@ export function Navbar() {
           aria-label="Main navigation"
         >
           {/* ── Logo ────────────────────────────────────────────────── */}
+
           <Link
             href="/"
             className="flex items-center gap-2 focus-visible:outline-none"
             aria-label="Velvet Spark — Home"
           >
+            {/* <Image
+              src="/images/logo.png"
+              alt="Velvet Spark"
+              width={40}
+              height={40}
+              className="object-contain w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
+            /> */}
             <span className="font-display text-2xl font-bold text-charcoal dark:text-ivory leading-none tracking-tight">
-              Velvet{" "}
-              <span className="text-gradient-gold">Spark</span>
+              Velvet <span className="text-gradient-gold">Spark</span>
             </span>
           </Link>
 
@@ -51,7 +59,6 @@ export function Navbar() {
 
           {/* ── Client island: search, cart badge, auth ──────────────── */}
           <NavbarActions />
-
         </nav>
       </Container>
     </header>

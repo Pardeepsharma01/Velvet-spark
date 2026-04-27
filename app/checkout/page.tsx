@@ -4,6 +4,12 @@ import React, { useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FadeIn, SlideUp, ScaleOnHover, StaggerChildren, StaggerItem, AnimatedCounter } from "@/components/motion";
 import { Button } from "@/components/ui/button";
+import { useAppSelector } from "@/store/hooks";
+import { selectCartItems, updateQuantity, removeFromCart } from "@/store/cartSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { useRouter } from "next/navigation";
+import { placeOrder } from "@/store/orderSlice";
+import { clearCart } from "@/store/cartSlice";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -26,35 +32,51 @@ interface FormState {
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
-const mockCartItems: CartItem[] = [
-  {
-    id: "vs-001",
-    name: "Aurora Pendant Necklace",
-    image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
-    price: 1299,
-    quantity: 1,
-  },
-  {
-    id: "vs-002",
-    name: "Crystal Stud Earrings",
-    image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
-    price: 849,
-    quantity: 2,
-  },
-  {
-    id: "vs-003",
-    name: "Celestial Bangle Set",
-    image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
-    price: 1799,
-    quantity: 1,
-  },
-];
+// const mockCartItems: CartItem[] = [
+//   {
+//     id: "vs-001",
+//     name: "Aurora Pendant Necklace",
+//     image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
+//     price: 1299,
+//     quantity: 1,
+//   },
+//   {
+//     id: "vs-002",
+//     name: "Crystal Stud Earrings",
+//     image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
+//     price: 849,
+//     quantity: 2,
+//   },
+//   {
+//     id: "vs-003",
+//     name: "Celestial Bangle Set",
+//     image: "https://placehold.co/80x80/F5F0E8/C9A84C?text=VS",
+//     price: 1799,
+//     quantity: 1,
+//   },
+// ];
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function CheckoutPage() {
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
   // Cart state
-  const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
+  // const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
+
+
+ // Redux se cart lo
+  const reduxCartItems = useAppSelector(selectCartItems);
+
+    // Redux items ko local CartItem format mein convert karo
+  const cartItems = reduxCartItems.map((item) => ({
+    id: item.product.id,
+    name: item.product.name,
+    image: item.product.images?.[0]?.url ?? "",
+    price: item.product.price,
+    quantity: item.quantity,
+  }));
 
   // Form state
   const [form, setForm] = useState<FormState>({
@@ -91,18 +113,34 @@ export default function CheckoutPage() {
 
   // ─── Functions ──────────────────────────────────────────────────────────────
 
+  // function updateQty(id: string, delta: number) {
+  //   setCartItems((prev) =>
+  //     prev.map((item) =>
+  //       item.id === id
+  //         ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+  //         : item
+  //     )
+  //   );
+  // }
+
+   //  Redux dispatch
   function updateQty(id: string, delta: number) {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
+    const item = reduxCartItems.find((i) => i.product.id === id);
+    if (item) {
+      dispatch(updateQuantity({ 
+        productId: id, 
+        quantity: item.quantity + delta 
+      }));
+    }
   }
 
+  // function removeItem(id: string) {
+  //   setCartItems((prev) => prev.filter((item) => item.id !== id));
+  // }
+
+    //  Redux dispatch
   function removeItem(id: string) {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    dispatch(removeFromCart(id));
   }
 
   function validateForm(): boolean {
@@ -127,11 +165,38 @@ export default function CheckoutPage() {
     return Object.keys(newErrors).length === 0;
   }
 
+  // function handlePlaceOrder() {
+  //   if (validateForm()) {
+  //     setOrderPlaced(true);
+  //   }
+  // }
+
   function handlePlaceOrder() {
-    if (validateForm()) {
-      setOrderPlaced(true);
-    }
+  if (validateForm()) {
+    // Order banao
+    const order = {
+      id: orderId,
+      date: new Date().toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+      status: "Pending" as const,
+      products: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        quantity: item.quantity,
+      })),
+      total: subtotal,
+    };
+
+    dispatch(placeOrder(order)); // ✅ Redux mein save karo
+    dispatch(clearCart());       // ✅ cart clear karo
+    setOrderPlaced(true);
   }
+}
 
   function handleApplyCoupon() {
     setCouponError("Invalid coupon");
@@ -166,9 +231,13 @@ export default function CheckoutPage() {
               Order ID: {orderId}
             </div>
 
-            <Button variant="outline" size="md">
+            {/* <Button variant="outline" size="md">
               Continue Shopping
-            </Button>
+            </Button> */}
+
+            <Button variant="outline" size="md" onClick={() => router.push("/shop")}>
+  Continue Shopping
+</Button>
           </div>
         </FadeIn>
       </div>
