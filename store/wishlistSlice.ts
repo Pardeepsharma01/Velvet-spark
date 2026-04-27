@@ -1,26 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Product, WishlistState } from "@/types";
 
-// ─── Storage Logic ───────────────────────────────────────────────────────────
-// const WISHLIST_STORAGE_KEY = "velvet-spark:wishlist";
-
-// function loadWishlistFromStorage(): Product[] {
-//   if (typeof window === "undefined") return [];
-//   try {
-//     const raw = localStorage.getItem(WISHLIST_STORAGE_KEY);
-//     return raw ? JSON.parse(raw) : [];
-//   } catch {
-//     return [];
-//   }
-// }
-
-// function saveWishlistToStorage(items: Product[]) {
-//   if (typeof window === "undefined") return;
-//   try {
-//     localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(items));
-//   } catch {}
-// }
-
 // ─── Initial State ────────────────────────────────────────────────────────────
 
 const initialState: WishlistState = {
@@ -33,18 +13,13 @@ const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-  // hydrateWishlist(state) {
-  //   state.items = loadWishlistFromStorage();
-  // },
-  // reducers: {
-    /**
-     * Toggle a product in the wishlist.
-     * If present → remove. If absent → add.
-     */
+    //Toggle a product in the wishlist.
+    //If present → remove. If absent → add.
+
     toggleWishlist(state, action: PayloadAction<Product>) {
       const product = action.payload;
       const existingIndex = state.items.findIndex(
-        (item) => item.id === product.id
+        (item) => item.id === product.id,
       );
 
       if (existingIndex >= 0) {
@@ -52,7 +27,6 @@ const wishlistSlice = createSlice({
       } else {
         state.items.push(product);
       }
-      // saveWishlistToStorage(state.items);
     },
 
     /**
@@ -60,7 +34,6 @@ const wishlistSlice = createSlice({
      */
     removeFromWishlist(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
-      // saveWishlistToStorage(state.items);
     },
 
     /**
@@ -68,7 +41,6 @@ const wishlistSlice = createSlice({
      */
     clearWishlist(state) {
       state.items = [];
-      // saveWishlistToStorage(state.items);
     },
   },
 });

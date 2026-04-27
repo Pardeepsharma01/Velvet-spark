@@ -24,10 +24,7 @@ export async function signUp(formData: FormData) {
   if (error) {
     return redirect(`/auth/sign-up?error=${encodeURIComponent(error.message)}`);
   }
-return redirect("/auth/sign-up-success");
-  // return redirect("/auth/sign-up-success");
-  // revalidatePath("/", "layout");
-// return redirect("/auth/sign-up-success?next=" + redirectTo);
+  return redirect("/auth/sign-up-success");
 }
 
 // ─── Sign In ──────────────────────────────────────────────────────────────────
@@ -46,7 +43,6 @@ export async function signIn(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  // return redirect(redirectTo);
   return redirect("/auth/sign-up-success?next=" + redirectTo);
 }
 
@@ -55,22 +51,16 @@ export async function signIn(formData: FormData) {
 export async function signInWithGoogle() {
   const supabase = await createClient();
 
-  // const siteUrl =
-  //   process.env.NEXT_PUBLIC_SITE_URL ||
-  //   process.env.VERCEL_URL
-  //     ? `https://${process.env.VERCEL_URL}`
-  //     : "http://localhost:3000";
-
   const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
       redirectTo: `${siteUrl}/auth/confirm?next=/`,
-      // redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
-      // redirectTo: `${siteUrl}/auth/confirm?next=/auth/sign-up-success`,
     },
   });
 

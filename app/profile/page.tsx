@@ -8,30 +8,40 @@ import { Input } from "@/components/ui/input";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { signOut } from "@/app/auth/actions";
-import { FadeIn, SlideUp, StaggerChildren, StaggerItem, ScaleOnHover } from "@/components/motion";
+import {
+  FadeIn,
+  SlideUp,
+  StaggerChildren,
+  StaggerItem,
+  ScaleOnHover,
+} from "@/components/motion";
 import type { User } from "@supabase/supabase-js";
-import Image from "next/image";
-import { 
-  User as UserIcon, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Package, 
-  Heart, 
-  Shield, 
-  ChevronRight, 
-  Star, 
-  Edit2, 
-  Check, 
+import {
+  User as UserIcon,
+  Mail,
+  Phone,
+  MapPin,
+  Package,
+  Heart,
+  Shield,
+  ChevronRight,
+  Star,
+  Edit2,
+  Check,
   X,
-  LogOut
+  LogOut,
 } from "lucide-react";
 
 // ─── Avatar Initials ──────────────────────────────────────────────────────────
 function AvatarInitials({ name, email }: { name?: string; email?: string }) {
   const initials = name
-    ? name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase()
-    : email?.[0]?.toUpperCase() ?? "?";
+    ? name
+        .split(" ")
+        .map((n) => n[0])
+        .slice(0, 2)
+        .join("")
+        .toUpperCase()
+    : (email?.[0]?.toUpperCase() ?? "?");
 
   return (
     <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#D4AF37] border-[3px] border-white shadow-md flex items-center justify-center">
@@ -68,11 +78,11 @@ export default function ProfilePage() {
         return;
       }
       setUser(data.user);
-      
+
       const providerName = data.user.user_metadata?.full_name;
       const providerEmail = data.user.email;
-      
-      setFormData(prev => ({
+
+      setFormData((prev) => ({
         ...prev,
         fullName: providerName || "Velvet Spark Customer",
         email: providerEmail || "customer@velvetspark.com",
@@ -94,7 +104,7 @@ export default function ProfilePage() {
   };
 
   const handleInputChange = (field: keyof typeof formData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   if (loading) {
@@ -109,16 +119,7 @@ export default function ProfilePage() {
     );
   }
 
-  // User meta parsing
-//   const avatarUrl = user?.user_metadata?.avatar_url;
-//   const joinedAt = user?.created_at
-//     ? new Date(user.created_at).toLocaleDateString("en-US", {
-//         day: "numeric",
-//         month: "long",
-//         year: "numeric",
-//       })
-//     : "Recently";
-const name = user?.user_metadata?.full_name as string | undefined;
+  const name = user?.user_metadata?.full_name as string | undefined;
   const email = user?.email;
   const joinedAt = user?.created_at
     ? new Date(user.created_at).toLocaleDateString("en-IN", {
@@ -137,45 +138,61 @@ const name = user?.user_metadata?.full_name as string | undefined;
   ];
 
   const quickAccessLinks = [
-    { label: "My Orders", description: "Track your packages", href: "/orders", icon: Package },
-    { label: "My Wishlist", description: "View your saved items", href: "/wishlist", icon: Heart },
-    { label: "Security", description: "Password & Authentication", href: "/auth/update-password", icon: Shield },
+    {
+      label: "My Orders",
+      description: "Track your packages",
+      href: "/orders",
+      icon: Package,
+    },
+    {
+      label: "My Wishlist",
+      description: "View your saved items",
+      href: "/wishlist",
+      icon: Heart,
+    },
+    {
+      label: "Security",
+      description: "Password & Authentication",
+      href: "/auth/update-password",
+      icon: Shield,
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] dark:bg-charcoal pt-16 pb-24">
       {/* Toast Notification */}
-      <div 
+      <div
         className={`fixed top-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-in-out ${
-          successToast ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+          successToast
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
         <div className="bg-green-50 text-green-800 border border-green-200 px-6 py-3 rounded-full flex items-center gap-2 shadow-[0_4px_6px_rgba(0,0,0,0.05)]">
           <Check size={18} className="text-green-600" />
-          <span className="font-medium text-sm">Profile updated successfully!</span>
+          <span className="font-medium text-sm">
+            Profile updated successfully!
+          </span>
         </div>
       </div>
 
       <Container size="lg">
         <div className="max-w-5xl mx-auto space-y-10">
-
           {/* 1. Hero Section */}
           <FadeIn direction="up" duration={0.6}>
             <div className="relative flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-6 p-8 bg-white dark:bg-charcoal-700/50 rounded-2xl border border-border shadow-[0_4px_6px_rgba(0,0,0,0.05)]">
-               
               {/* Avatar */}
               <div className="shrink-0 relative">
                 {/* {avatarUrl ? ( */}
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[3px] border-[#D4AF37] shadow-md overflow-hidden relative">
-                    {/* <Image 
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[3px] border-[#D4AF37] shadow-md overflow-hidden relative">
+                  {/* <Image 
                       src={avatarUrl} 
                       alt={formData.fullName} 
                       fill 
                       className="object-cover"
                     /> */}
-                                     <AvatarInitials name={name} email={email} />
-
-                  </div>
+                  <AvatarInitials name={name} email={email} />
+                </div>
                 {/* ) : ( */}
                 {/* //   <AvatarInitials name={formData.fullName} email={formData.email} /> */}
                 {/* )} */}
@@ -186,23 +203,27 @@ const name = user?.user_metadata?.full_name as string | undefined;
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full">
                   <div className="flex -space-x-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={12} className="text-[#D4AF37] fill-[#D4AF37]" />
+                      <Star
+                        key={i}
+                        size={12}
+                        className="text-[#D4AF37] fill-[#D4AF37]"
+                      />
                     ))}
                   </div>
                   <span className="text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">
                     Velvet Gold Member
                   </span>
                 </div>
-                
+
                 <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#333333] dark:text-ivory mb-1">
                   {formData.fullName}
                 </h1>
                 <p className="text-charcoal-400 dark:text-charcoal-300 text-sm mb-4">
                   Customer since {joinedAt}
                 </p>
-                
+
                 {!isEditing && (
-                  <Button 
+                  <Button
                     onClick={() => setIsEditing(true)}
                     variant="outline"
                     className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-sm rounded-full px-6"
@@ -217,18 +238,17 @@ const name = user?.user_metadata?.full_name as string | undefined;
 
           {/* 2. Main Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            
             {/* Left 60% (col-span-3) - Profile Details */}
             <div className="lg:col-span-3 space-y-6">
               <SlideUp delay={0.1}>
                 <h2 className="font-display text-xl sm:text-2xl font-semibold text-[#333333] dark:text-ivory px-1">
                   Profile Details
                 </h2>
-                
+
                 <div className="mt-4 bg-white dark:bg-charcoal-700/50 rounded-2xl border border-border shadow-[0_4px_6px_rgba(0,0,0,0.05)] overflow-hidden">
                   <div className="flex flex-col">
                     {profileDetails.map((field, idx) => (
-                      <div 
+                      <div
                         key={field.id}
                         className={`group p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 transition-all duration-200 border-b border-[#EEEEEE] dark:border-border hover:bg-black/5 dark:hover:bg-ivory/5 ${
                           idx === profileDetails.length - 1 ? "border-b-0" : ""
@@ -242,13 +262,20 @@ const name = user?.user_metadata?.full_name as string | undefined;
                             {field.label}
                           </span>
                         </div>
-                        
+
                         <div className="w-full sm:w-2/3 flex-1 flex justify-end">
                           {isEditing ? (
                             <Input
                               type={field.type}
-                              value={formData[field.id as keyof typeof formData]}
-                              onChange={(e) => handleInputChange(field.id as keyof typeof formData, e.target.value)}
+                              value={
+                                formData[field.id as keyof typeof formData]
+                              }
+                              onChange={(e) =>
+                                handleInputChange(
+                                  field.id as keyof typeof formData,
+                                  e.target.value,
+                                )
+                              }
                               className="w-full bg-transparent border-[#D4AF37] focus-visible:ring-[#D4AF37]/50 shadow-sm"
                             />
                           ) : (
@@ -264,15 +291,15 @@ const name = user?.user_metadata?.full_name as string | undefined;
                   {/* Actions Row when editing */}
                   {isEditing && (
                     <div className="p-5 sm:p-6 bg-[#D4AF37]/5 border-t border-[#D4AF37]/20 flex items-center justify-end gap-3 transition-all">
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         onClick={handleCancel}
                         className="text-charcoal-500 hover:text-charcoal hover:bg-black/5"
                       >
                         <X size={16} className="mr-2" />
                         Cancel
                       </Button>
-                      <Button 
+                      <Button
                         onClick={handleSave}
                         className="bg-[#D4AF37] text-white hover:bg-[#D4AF37]/90 shadow-md"
                       >
@@ -287,17 +314,16 @@ const name = user?.user_metadata?.full_name as string | undefined;
 
             {/* Right 40% (col-span-2) - Quick Access & Sign Out */}
             <div className="lg:col-span-2 flex flex-col gap-8">
-              
               <SlideUp delay={0.2}>
                 <h2 className="font-display text-xl sm:text-2xl font-semibold text-[#333333] dark:text-ivory px-1">
                   Quick Access
                 </h2>
-                
+
                 <div className="mt-4 p-1 rounded-2xl bg-white dark:bg-charcoal-700/50 border border-[#D4AF37] shadow-[0_4px_6px_rgba(0,0,0,0.05)]">
                   <StaggerChildren delay={0.3} stagger={0.1}>
                     {quickAccessLinks.map((link, idx) => (
                       <StaggerItem key={link.label}>
-                        <a 
+                        <a
                           href={link.href}
                           className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:bg-[#D4AF37]/10 group ${
                             idx !== quickAccessLinks.length - 1 ? "mb-1" : ""
@@ -314,7 +340,10 @@ const name = user?.user_metadata?.full_name as string | undefined;
                               {link.description}
                             </p>
                           </div>
-                          <ChevronRight size={18} className="text-border group-hover:text-[#D4AF37] group-hover:translate-x-1 transition-all" />
+                          <ChevronRight
+                            size={18}
+                            className="text-border group-hover:text-[#D4AF37] group-hover:translate-x-1 transition-all"
+                          />
                         </a>
                       </StaggerItem>
                     ))}
@@ -326,9 +355,12 @@ const name = user?.user_metadata?.full_name as string | undefined;
               <SlideUp delay={0.4}>
                 <div className="flex flex-col items-center pt-6 border-t border-[#EEEEEE] dark:border-border mt-4">
                   <p className="text-xs text-charcoal-400 mb-4 text-center">
-                    Signed in as <strong className="text-[#333333] dark:text-ivory break-all">{formData.email}</strong>
+                    Signed in as{" "}
+                    <strong className="text-[#333333] dark:text-ivory break-all">
+                      {formData.email}
+                    </strong>
                   </p>
-                  
+
                   <form action={signOut} className="w-full">
                     <ScaleOnHover className="w-full text-center">
                       <Button
@@ -345,204 +377,10 @@ const name = user?.user_metadata?.full_name as string | undefined;
                   </form>
                 </div>
               </SlideUp>
-
             </div>
           </div>
-          
         </div>
       </Container>
     </div>
   );
 }
-
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
-// import { createClient } from "@/lib/supabase/client";
-// import { Button } from "@/components/ui/button";
-// import { Container } from "@/components/ui/container";
-// import { Section } from "@/components/ui/section";
-// import { signOut } from "@/app/auth/actions";
-// import type { User } from "@supabase/supabase-js";
-
-// // ─── Avatar Initials ──────────────────────────────────────────────────────────
-
-// function AvatarInitials({ name, email }: { name?: string; email?: string }) {
-//   const initials = name
-//     ? name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase()
-//     : email?.[0]?.toUpperCase() ?? "?";
-
-//   return (
-//     <div className="w-20 h-20 rounded-full bg-gold/15 border-2 border-gold/40 flex items-center justify-center">
-//       <span className="font-display text-2xl font-bold text-gradient-gold">
-//         {initials}
-//       </span>
-//     </div>
-//   );
-// }
-
-// // ─── Profile Page ─────────────────────────────────────────────────────────────
-
-// export default function ProfilePage() {
-//   const router = useRouter();
-//   const [user, setUser] = useState<User | null>(null);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const supabase = createClient();
-//     supabase.auth.getUser().then(({ data }) => {
-//       if (!data.user) {
-//         router.replace("/auth/login?redirectTo=/profile");
-//         return;
-//       }
-//       setUser(data.user);
-//       setLoading(false);
-//     });
-//   }, [router]);
-
-//   if (loading) {
-//     return (
-//       <Section spacing="xl">
-//         <Container size="sm">
-//           <div className="flex justify-center items-center min-h-[40vh]">
-//             <span className="h-8 w-8 rounded-full border-2 border-gold/30 border-t-gold animate-spin" />
-//           </div>
-//         </Container>
-//       </Section>
-//     );
-//   }
-
-//   const name = user?.user_metadata?.full_name as string | undefined;
-//   const email = user?.email;
-//   const joinedAt = user?.created_at
-//     ? new Date(user.created_at).toLocaleDateString("en-IN", {
-//         day: "numeric",
-//         month: "long",
-//         year: "numeric",
-//       })
-//     : null;
-
-//   return (
-//     <Section spacing="xl">
-//       <Container size="sm">
-//         <div className="max-w-lg mx-auto">
-
-//           {/* Page heading */}
-//           <h1 className="font-display text-3xl font-bold text-charcoal dark:text-ivory mb-8 text-center">
-//             My Profile
-//           </h1>
-
-//           {/* Profile card */}
-//           <div className="bg-white dark:bg-charcoal-700 rounded-2xl shadow-card-lg border border-border p-8">
-
-//             {/* Avatar + name */}
-//             <div className="flex flex-col items-center gap-3 mb-8 pb-8 border-b border-border">
-//               <AvatarInitials name={name} email={email} />
-//               <div className="text-center">
-//                 <h2 className="font-display text-xl font-semibold text-charcoal dark:text-ivory">
-//                   {name ?? "Velvet Spark Customer"}
-//                 </h2>
-//                 {joinedAt && (
-//                   <p className="text-xs text-charcoal-400 dark:text-charcoal-300 mt-1">
-//                     Member since {joinedAt}
-//                   </p>
-//                 )}
-//               </div>
-//             </div>
-
-//             {/* Account details */}
-//             <div className="flex flex-col gap-4 mb-8">
-//               <h3 className="text-xs font-semibold uppercase tracking-widest text-gold">
-//                 Account Details
-//               </h3>
-
-//               {/* Name row */}
-//               <div className="flex flex-col gap-1">
-//                 <span className="text-xs text-charcoal-400 dark:text-charcoal-300 font-medium">
-//                   Full Name
-//                 </span>
-//                 <span className="text-sm text-charcoal dark:text-ivory font-medium">
-//                   {name ?? "—"}
-//                 </span>
-//               </div>
-
-//               {/* Email row */}
-//               <div className="flex flex-col gap-1">
-//                 <span className="text-xs text-charcoal-400 dark:text-charcoal-300 font-medium">
-//                   Email Address
-//                 </span>
-//                 <span className="text-sm text-charcoal dark:text-ivory font-medium">
-//                   {email}
-//                 </span>
-//               </div>
-
-//               {/* Auth provider */}
-//               <div className="flex flex-col gap-1">
-//                 <span className="text-xs text-charcoal-400 dark:text-charcoal-300 font-medium">
-//                   Sign-in Method
-//                 </span>
-//                 <span className="text-sm text-charcoal dark:text-ivory font-medium capitalize">
-//                   {user?.app_metadata?.provider ?? "email"}
-//                 </span>
-//               </div>
-//             </div>
-
-//             {/* Quick links */}
-//             <div className="flex flex-col gap-2 mb-8">
-//               <h3 className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">
-//                 Quick Access
-//               </h3>
-//               {[
-//                 { label: "My Orders", href: "/orders" },
-//                 { label: "My Wishlist", href: "/wishlist" },
-//                 { label: "Change Password", href: "/auth/update-password" },
-//               ].map((item) => (
-//                 <a
-//                   key={item.href}
-//                   href={item.href}
-//                   className="flex items-center justify-between px-4 py-3 rounded-lg border border-border hover:border-gold/40 hover:bg-gold/5 transition-colors group"
-//                 >
-//                   <span className="text-sm text-charcoal dark:text-ivory group-hover:text-gold transition-colors">
-//                     {item.label}
-//                   </span>
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="14"
-//                     height="14"
-//                     viewBox="0 0 24 24"
-//                     fill="none"
-//                     stroke="currentColor"
-//                     strokeWidth="2"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     className="text-charcoal-400 group-hover:text-gold transition-colors"
-//                     aria-hidden="true"
-//                   >
-//                     <path d="M9 18l6-6-6-6" />
-//                   </svg>
-//                 </a>
-//               ))}
-//             </div>
-
-//             {/* Sign out */}
-//             <form action={signOut}>
-//               <Button
-//                 type="submit"
-//                 variant="outline"
-//                 size="md"
-//                 fullWidth
-//                 className="border-destructive/50 text-destructive hover:bg-destructive hover:text-white hover:border-destructive"
-//               >
-//                 Sign Out
-//               </Button>
-//             </form>
-//           </div>
-
-//         </div>
-//       </Container>
-//     </Section>
-//   );
-// }
-
-

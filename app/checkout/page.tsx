@@ -1,11 +1,20 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { FadeIn, SlideUp, ScaleOnHover, StaggerChildren, StaggerItem, AnimatedCounter } from "@/components/motion";
+import { motion } from "framer-motion";
+import {
+  FadeIn,
+  SlideUp,
+  StaggerChildren,
+  StaggerItem,
+} from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { useAppSelector } from "@/store/hooks";
-import { selectCartItems, updateQuantity, removeFromCart } from "@/store/cartSlice";
+import {
+  selectCartItems,
+  updateQuantity,
+  removeFromCart,
+} from "@/store/cartSlice";
 import { useAppDispatch } from "@/store/hooks";
 import { useRouter } from "next/navigation";
 import { placeOrder } from "@/store/orderSlice";
@@ -62,14 +71,14 @@ export default function CheckoutPage() {
   const router = useRouter();
 
   const dispatch = useAppDispatch();
+
   // Cart state
   // const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
 
-
- // Redux se cart lo
+  // Redux se cart liya
   const reduxCartItems = useAppSelector(selectCartItems);
 
-    // Redux items ko local CartItem format mein convert karo
+  // Redux items ko local CartItem format mein convert kiya
   const cartItems = reduxCartItems.map((item) => ({
     id: item.product.id,
     name: item.product.name,
@@ -108,37 +117,24 @@ export default function CheckoutPage() {
 
   const subtotal = useMemo(
     () => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [cartItems]
+    [cartItems],
   );
 
   // ─── Functions ──────────────────────────────────────────────────────────────
 
-  // function updateQty(id: string, delta: number) {
-  //   setCartItems((prev) =>
-  //     prev.map((item) =>
-  //       item.id === id
-  //         ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-  //         : item
-  //     )
-  //   );
-  // }
-
-   //  Redux dispatch
   function updateQty(id: string, delta: number) {
     const item = reduxCartItems.find((i) => i.product.id === id);
     if (item) {
-      dispatch(updateQuantity({ 
-        productId: id, 
-        quantity: item.quantity + delta 
-      }));
+      dispatch(
+        updateQuantity({
+          productId: id,
+          quantity: item.quantity + delta,
+        }),
+      );
     }
   }
 
-  // function removeItem(id: string) {
-  //   setCartItems((prev) => prev.filter((item) => item.id !== id));
-  // }
-
-    //  Redux dispatch
+  //  Redux dispatch
   function removeItem(id: string) {
     dispatch(removeFromCart(id));
   }
@@ -165,38 +161,32 @@ export default function CheckoutPage() {
     return Object.keys(newErrors).length === 0;
   }
 
-  // function handlePlaceOrder() {
-  //   if (validateForm()) {
-  //     setOrderPlaced(true);
-  //   }
-  // }
-
   function handlePlaceOrder() {
-  if (validateForm()) {
-    // Order banao
-    const order = {
-      id: orderId,
-      date: new Date().toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      }),
-      status: "Pending" as const,
-      products: cartItems.map((item) => ({
-        id: item.id,
-        name: item.name,
-        image: item.image,
-        price: item.price,
-        quantity: item.quantity,
-      })),
-      total: subtotal,
-    };
+    if (validateForm()) {
+      // Order banao
+      const order = {
+        id: orderId,
+        date: new Date().toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        }),
+        status: "Pending" as const,
+        products: cartItems.map((item) => ({
+          id: item.id,
+          name: item.name,
+          image: item.image,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+        total: subtotal,
+      };
 
-    dispatch(placeOrder(order)); // ✅ Redux mein save karo
-    dispatch(clearCart());       // ✅ cart clear karo
-    setOrderPlaced(true);
+      dispatch(placeOrder(order)); //  save in redux
+      dispatch(clearCart()); // cart clear
+      setOrderPlaced(true);
+    }
   }
-}
 
   function handleApplyCoupon() {
     setCouponError("Invalid coupon");
@@ -231,13 +221,13 @@ export default function CheckoutPage() {
               Order ID: {orderId}
             </div>
 
-            {/* <Button variant="outline" size="md">
+            <Button
+              variant="outline"
+              size="md"
+              onClick={() => router.push("/shop")}
+            >
               Continue Shopping
-            </Button> */}
-
-            <Button variant="outline" size="md" onClick={() => router.push("/shop")}>
-  Continue Shopping
-</Button>
+            </Button>
           </div>
         </FadeIn>
       </div>
@@ -271,7 +261,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-background pb-16">
-
       {/* ── Header ─────────────────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 md:px-8 pt-10 pb-6">
         <FadeIn direction="up">
@@ -288,10 +277,8 @@ export default function CheckoutPage() {
       {/* ── Main Layout ────────────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
           {/* ── LEFT COLUMN: Form ─────────────────────────────────────────── */}
           <div className="md:col-span-2">
-
             {/* ── Shipping Address Form ─────────────────────────────────── */}
             <SlideUp delay={0.1}>
               <div className="bg-card border border-border rounded-lg p-6 mb-6">
@@ -471,9 +458,7 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* Online Payment — Coming Soon */}
-                  <div
-                    className="flex items-center gap-3 border border-border rounded-lg p-4 opacity-50 cursor-not-allowed"
-                  >
+                  <div className="flex items-center gap-3 border border-border rounded-lg p-4 opacity-50 cursor-not-allowed">
                     <div className="w-4 h-4 rounded-full border-2 border-muted-foreground flex-shrink-0" />
                     <div>
                       <div className="flex items-center gap-2">
@@ -574,12 +559,18 @@ export default function CheckoutPage() {
                       placeholder="Enter coupon code"
                       className="flex-1 border border-border rounded-md px-3 py-2.5 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 placeholder:text-muted-foreground/50"
                     />
-                    <Button variant="outline" size="sm" onClick={handleApplyCoupon}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleApplyCoupon}
+                    >
                       Apply
                     </Button>
                   </div>
                   {couponError && (
-                    <p className="text-xs text-destructive mt-1">{couponError}</p>
+                    <p className="text-xs text-destructive mt-1">
+                      {couponError}
+                    </p>
                   )}
 
                   {/* ── Pricing Breakdown ───────────────────────────────── */}

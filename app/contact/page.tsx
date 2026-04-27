@@ -4,8 +4,12 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, MapPin, MessageCircle, Send, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { FadeIn, SlideUp, StaggerChildren, StaggerItem } from "@/components/motion";
+import {
+  FadeIn,
+  SlideUp,
+  StaggerChildren,
+  StaggerItem,
+} from "@/components/motion";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -44,9 +48,7 @@ function ContactBlock({
         </div>
 
         <div className="space-y-0.5">
-          <p
-            className="font-display text-xs uppercase tracking-[0.15em] text-muted-foreground"
-          >
+          <p className="font-display text-xs uppercase tracking-[0.15em] text-muted-foreground">
             {label}
           </p>
           {href ? (
@@ -73,7 +75,10 @@ function ElegantInput({
   label,
   id,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label: string; id: string }) {
+}: React.InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  id: string;
+}) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -82,7 +87,7 @@ function ElegantInput({
         htmlFor={id}
         className={cn(
           "block font-display text-xs uppercase tracking-[0.12em] mb-2 transition-colors duration-200",
-          focused ? "text-gold" : "text-muted-foreground"
+          focused ? "text-gold" : "text-muted-foreground",
         )}
       >
         {label}
@@ -95,7 +100,7 @@ function ElegantInput({
           "w-full bg-transparent text-sm text-foreground py-3 px-0",
           "border-0 border-b outline-none transition-all duration-300",
           "placeholder:text-muted-foreground/50",
-          focused ? "border-b-gold" : "border-b-border"
+          focused ? "border-b-gold" : "border-b-border",
         )}
         {...props}
       />
@@ -103,7 +108,7 @@ function ElegantInput({
       <span
         className={cn(
           "absolute bottom-0 left-0 h-[1px] bg-gold transition-all duration-300 ease-out",
-          focused ? "w-full" : "w-0"
+          focused ? "w-full" : "w-0",
         )}
       />
     </div>
@@ -116,7 +121,10 @@ function ElegantTextarea({
   label,
   id,
   ...props
-}: React.TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string; id: string }) {
+}: React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  label: string;
+  id: string;
+}) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -125,7 +133,7 @@ function ElegantTextarea({
         htmlFor={id}
         className={cn(
           "block font-display text-xs uppercase tracking-[0.12em] mb-2 transition-colors duration-200",
-          focused ? "text-gold" : "text-muted-foreground"
+          focused ? "text-gold" : "text-muted-foreground",
         )}
       >
         {label}
@@ -139,14 +147,14 @@ function ElegantTextarea({
           "w-full bg-transparent text-sm text-foreground py-3 px-0 resize-none",
           "border-0 border-b outline-none transition-all duration-300",
           "placeholder:text-muted-foreground/50",
-          focused ? "border-b-gold" : "border-b-border"
+          focused ? "border-b-gold" : "border-b-border",
         )}
         {...props}
       />
       <span
         className={cn(
           "absolute bottom-0 left-0 h-[1px] bg-gold transition-all duration-300 ease-out",
-          focused ? "w-full" : "w-0"
+          focused ? "w-full" : "w-0",
         )}
       />
     </div>
@@ -173,7 +181,7 @@ function ElegantSelect({
         htmlFor={id}
         className={cn(
           "block font-display text-xs uppercase tracking-[0.12em] mb-2 transition-colors duration-200",
-          focused ? "text-gold" : "text-muted-foreground"
+          focused ? "text-gold" : "text-muted-foreground",
         )}
       >
         {label}
@@ -187,7 +195,7 @@ function ElegantSelect({
             "w-full bg-transparent text-sm text-foreground py-3 px-0 pr-8",
             "border-0 border-b outline-none appearance-none cursor-pointer transition-all duration-300",
             "placeholder:text-muted-foreground/50",
-            focused ? "border-b-gold" : "border-b-border"
+            focused ? "border-b-gold" : "border-b-border",
           )}
           {...props}
         >
@@ -200,14 +208,14 @@ function ElegantSelect({
         <ChevronDown
           className={cn(
             "absolute right-1 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none transition-colors duration-200",
-            focused ? "text-gold" : "text-muted-foreground"
+            focused ? "text-gold" : "text-muted-foreground",
           )}
         />
       </div>
       <span
         className={cn(
           "absolute bottom-0 left-0 h-[1px] bg-gold transition-all duration-300 ease-out",
-          focused ? "w-full" : "w-0"
+          focused ? "w-full" : "w-0",
         )}
       />
     </div>
@@ -232,7 +240,9 @@ export default function ContactPage() {
   const formInView = useInView(formRef, { once: true, margin: "-80px" });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -298,7 +308,6 @@ export default function ContactPage() {
       ════════════════════════════════════════════════════════════════════ */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24">
-
           {/* ── LEFT: Contact Info (2/5) ──────────────────────────────────── */}
           <div className="lg:col-span-2 space-y-0">
             <FadeIn direction="left" delay={0}>
@@ -338,7 +347,8 @@ export default function ContactPage() {
                   Hours
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Monday – Saturday<br />
+                  Monday – Saturday
+                  <br />
                   10:00 AM – 7:00 PM IST
                 </p>
               </div>
@@ -350,8 +360,14 @@ export default function ContactPage() {
             <motion.div
               ref={formRef}
               initial={{ opacity: 0, y: 48 }}
-              animate={formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 }}
+              animate={
+                formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }
+              }
+              transition={{
+                duration: 0.7,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.15,
+              }}
             >
               {submitted ? (
                 /* ── Success State ───────────────────────────────────────── */
@@ -374,7 +390,12 @@ export default function ContactPage() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
-                      setForm({ name: "", email: "", subject: "general", message: "" });
+                      setForm({
+                        name: "",
+                        email: "",
+                        subject: "general",
+                        message: "",
+                      });
                     }}
                     className="mt-4 text-xs font-display uppercase tracking-widest text-gold hover:text-gold/70 transition-colors underline underline-offset-4"
                   >
@@ -454,19 +475,24 @@ export default function ContactPage() {
                         "transition-all duration-300 ease-out",
                         "bg-gold hover:bg-gold-700 hover:border-gold-700 shadow-gold-sm hover:shadow-gold focus-visible:ring-gold",
                         "disabled:opacity-60 disabled:cursor-not-allowed",
-                        "flex items-center justify-center gap-3"
-                        
+                        "flex items-center justify-center gap-3",
                       )}
-                      style={{
-                        // Fallback using raw CSS vars for safety
-                        // bg-gold = #C9A84C, bg-rose-gold = #B76E79
-                      }}
+                      style={
+                        {
+                          // Fallback using raw CSS vars for safety
+                          // bg-gold = #C9A84C, bg-rose-gold = #B76E79
+                        }
+                      }
                     >
                       {loading ? (
                         <>
                           <motion.div
                             animate={{ rotate: 360 }}
-                            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                            transition={{
+                              repeat: Infinity,
+                              duration: 1,
+                              ease: "linear",
+                            }}
                             className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
                           />
                           Sending…
@@ -481,7 +507,8 @@ export default function ContactPage() {
                   </motion.div>
 
                   <p className="text-xs text-muted-foreground text-center leading-relaxed">
-                    We respect your privacy. Your information will never be shared.
+                    We respect your privacy. Your information will never be
+                    shared.
                   </p>
                 </form>
               )}
@@ -538,7 +565,8 @@ export default function ContactPage() {
           </div>
 
           <p className="mt-4 text-center text-xs text-muted-foreground">
-            Model Town, Yamuna Nagar, Haryana 135001 · Open Mon–Sat, 10 AM – 7 PM
+            Model Town, Yamuna Nagar, Haryana 135001 · Open Mon–Sat, 10 AM – 7
+            PM
           </p>
         </section>
       </SlideUp>

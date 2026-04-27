@@ -108,9 +108,6 @@ export default function CartPage() {
                     transition={{ delay: i * 0.05, duration: 0.3 }}
                     className="flex gap-4 p-4 bg-white dark:bg-charcoal-700 rounded-xl border border-border"
                   >
-                    {/* <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 rounded-lg bg-ivory dark:bg-charcoal-600 flex items-center justify-center">
-                      <span className="text-2xl text-gold/30">✦</span>
-                    </div> */}
                     <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 rounded-lg bg-ivory dark:bg-charcoal-600 relative overflow-hidden border border-border">
                       {item.product.images && item.product.images.length > 0 ? (
                         <Image
@@ -281,16 +278,7 @@ export default function CartPage() {
                   >
                     <Link href="/checkout">Proceed to Checkout</Link>
                   </Button>
-                  {/* <Link href="/checkout">
-                    <Button
-                      variant="primary"
-                      size="lg"
-                      fullWidth
-                      className="mt-2"
-                    >
-                      Proceed to Checkout
-                    </Button>
-                  </Link> */}
+
                   <Link
                     href="/shop"
                     className="text-center text-xs text-gold hover:text-gold-700 font-medium transition-colors"

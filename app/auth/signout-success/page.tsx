@@ -9,9 +9,9 @@ export default function SignOutSuccessPage() {
     const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(clearCart()); // ✅ logout pe cart empty
+    dispatch(clearCart()); //  logout pe cart empty
     const timer = setTimeout(() => {
-      window.location.href = "/"; // ✅ Full reload - session clear hoga
+      window.location.href = "/"; //  logout ke baad home pe redirect
     }, 1500);
     return () => clearTimeout(timer);
   }, []);

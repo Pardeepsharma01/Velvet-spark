@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/layout/navbar";
-// import Navbar from "@/components/landing-page/Navbar";
 import { Footer } from "@/components/layout/footer";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { NavbarActions } from "@/components/layout/navbar-actions";
-// import Image from "next/image";
 
 // ─── Nav Links ────────────────────────────────────────────────────────────────
 
