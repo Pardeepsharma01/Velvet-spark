@@ -163,16 +163,16 @@
   },
   {
     "id": "vs-008",
-    "slug": "serpentine-chain-necklace",
-    "name": "Serpentine Chain Necklace",
+    "slug": "serpentine-necklace",
+    "name": "Serpentine Necklace",
     "description": "A sleek, minimalist serpentine chain necklace in rose gold plating. The smooth woven links catch the light beautifully and can be worn alone or layered with pendants for a personalised look.",
     "shortDescription": "Minimalist serpentine chain necklace in rose gold plating.",
     "price": 649,
     "category": "necklaces",
     "material": "rose-gold-plated",
     "images": [
-      { "url": "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Serpentine Chain Necklace — flat lay", "isPrimary": true },
-      { "url": "https://images.unsplash.com/photo-1633934542430-0905ccb5f050?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Serpentine Chain Necklace — worn" }
+      { "url": "https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Serpentine Necklace — flat lay", "isPrimary": true },
+      { "url": "https://images.unsplash.com/photo-1633934542430-0905ccb5f050?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "alt": "Serpentine Necklace — worn" }
     ],
     "tags": ["chain", "minimalist", "layering", "rose gold", "new arrival"],
     "stock": 40,
