@@ -4,7 +4,19 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 
-const collections = [
+interface Collection {
+  title: string
+  subtitle: string
+  image: string
+  tag: string
+}
+
+interface CollectionCardProps {
+  item: Collection
+  index: number
+}
+
+const collections: Collection[] = [
   {
     title: 'Necklaces',
     subtitle: '48 Designs',
@@ -25,7 +37,7 @@ const collections = [
   },
 ]
 
-function CollectionCard({ item, index }) {
+function CollectionCard({ item, index }: CollectionCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}

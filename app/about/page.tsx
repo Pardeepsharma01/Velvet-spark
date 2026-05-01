@@ -41,6 +41,8 @@ const AboutPage = () => {
 
   return (
     <main className="bg-background min-h-screen">
+       {/* ── Thin gold top bar ──────────────────────────────────────────────── */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-gold to-transparent opacity-60" />
       {/* ─── Hero Section ────────────────────────────────────────── */}
       <section className="relative py-24 md:py-32 flex flex-col items-center justify-center text-center px-4">
         <FadeIn direction="up" duration={0.8}>

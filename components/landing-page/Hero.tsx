@@ -5,14 +5,27 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import type { Variants } from 'framer-motion'
 
 
 
-const fadeUp = {
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 40 },
+//   show: (i = 0) => ({
+//     opacity: 1, y: 0,
+//     transition: { duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.12 },
+//   }),
+// }
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  show: (i = 0) => ({
+  show: (i: number = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.12 },
+    transition: {
+      duration: 0.75,
+      ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+      delay: i * 0.12
+    },
   }),
 }
 

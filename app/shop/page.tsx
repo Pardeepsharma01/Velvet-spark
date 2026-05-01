@@ -10,6 +10,7 @@ import ShopContent from "./ShopContent";
 function ShopSkeleton() {
   return (
     <Section spacing="lg">
+      
       <Container>
         <div className="flex flex-col gap-6">
           <div className="h-8 w-32 bg-charcoal-100 dark:bg-charcoal-600 rounded animate-pulse" />

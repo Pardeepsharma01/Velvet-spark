@@ -43,7 +43,8 @@ const reviews = [
   },
 ]
 
-function Stars({ count }) {
+// function Stars({ count }) {
+function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-1">
       {Array.from({ length: count }).map((_, i) => (
@@ -59,7 +60,7 @@ export default function Testimonials() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
-  const paginate = (dir) => {
+  const paginate = (dir: number) => {
     setDirection(dir)
     setCurrent((prev) => (prev + dir + reviews.length) % reviews.length)
   }
@@ -70,9 +71,9 @@ export default function Testimonials() {
   }, [])
 
   const variants = {
-    enter: (dir) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
+    enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
+    exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
   }
 
   return (

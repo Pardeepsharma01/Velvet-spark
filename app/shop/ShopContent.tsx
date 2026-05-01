@@ -119,8 +119,11 @@ export default function ShopContent({ allProducts }: ShopContentProps) {
 
   return (
     <Section spacing="lg">
+       {/* ── Thin gold top bar ──────────────────────────────────────────────── */}
+      {/* <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-gold to-transparent opacity-60" /> */}
       <Container>
         <div className="flex flex-col gap-6">
+          
 
           {/* ── Header ──────────────────────────────────────────── */}
           <FadeIn>
