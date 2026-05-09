@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { Analytics } from "@vercel/analytics/next"
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 
@@ -82,6 +83,8 @@ export default function RootLayout({
             </AuthProvider>
           </StoreProvider>
         </ThemeProvider>
+        // vercel analytics component to track page views and other analytics data
+        <Analytics />
       </body>
     </html>
   );
