@@ -83,7 +83,6 @@ export default function RootLayout({
             </AuthProvider>
           </StoreProvider>
         </ThemeProvider>
-        // vercel analytics component to track page views and other analytics data
         <Analytics />
       </body>
     </html>
