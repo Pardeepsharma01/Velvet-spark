@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 
@@ -65,6 +65,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable}`}
     >
+         
       <body className="font-sans antialiased bg-background text-foreground min-h-screen flex flex-col">
         <ThemeProvider
           attribute="class"
